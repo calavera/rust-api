@@ -1,0 +1,16 @@
+version: 1
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - curl https://sh.rustup.rs -sSf | sh -s -- --profile minimal
+    build:
+      commands:
+        - make build
+  artifacts:
+    baseDirectory: .next
+    files:
+      - "**/*"
+  cache:
+    paths:
+      - target/**/*
