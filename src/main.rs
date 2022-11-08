@@ -24,5 +24,13 @@ async fn main() {
 
 // basic handler that responds with a static string
 async fn root() -> &'static str {
+    let res = std::fs::create_dir("./cache");
+    if let Err(err) = res {
+        println!("error creating directories: {}", err);
+    }
+    let res = std::fs::write("./cache/foo.txt", "cache file");
+    if let Err(err) = res {
+        println!("error writing file: {}", err);
+    }
     "Hello, from a Rust server!"
 }
